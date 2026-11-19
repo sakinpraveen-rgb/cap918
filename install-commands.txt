@@ -1,0 +1,15 @@
+winget install -e --id OpenJS.NodeJS.LTS
+winget install -e --id Docker.DockerDesktop
+winget install -e --id Google.AndroidStudio
+
+npm install -g @ionic/cli 
+
+cd <path-to-project-folder>
+npm ci
+npx playwright install chromium
+npx -y supabase@3.1.0 --version
+
+npm run build
+npx cap sync android
+cd android
+.\gradlew.bat assembleDebug

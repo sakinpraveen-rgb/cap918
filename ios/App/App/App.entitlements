@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Universal Links. Also enable "Associated Domains" for the App ID in the Apple Developer portal,
+	     and add this file under Signing & Capabilities in Xcode. -->
+	<key>com.apple.developer.associated-domains</key>
+	<array><string>applinks:pgmanager.example.com</string></array>
+</dict>
+</plist>

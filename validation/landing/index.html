@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PG Manager: rent, mess and complaints in one free app</title>
+<meta name="description" content="Free app for PG owners and renters. Track rent and mess dues, pay by UPI with automatic receipts, and file complaints with photos.">
+<style>
+  :root{--bg:#fbfaf7;--fg:#1c1b19;--muted:#5e5b55;--card:#fff;--line:#e6e2da;--accent:#0f6b5c;--accent-fg:#fff}
+  @media (prefers-color-scheme:dark){:root{--bg:#141413;--fg:#f1efe9;--muted:#a9a59c;--card:#1e1d1b;--line:#33312d;--accent:#3fb59f;--accent-fg:#0b1a17}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:880px;margin:0 auto;padding:48px 16px 64px}
+  h1{font-size:clamp(28px,5vw,42px);line-height:1.15;margin:0 0 12px}
+  .hi{color:var(--muted);margin:0 0 28px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 40px}
+  .btn{display:inline-block;padding:14px 20px;border-radius:10px;font-weight:600;text-decoration:none;border:2px solid var(--accent);min-height:48px}
+  .btn.primary{background:var(--accent);color:var(--accent-fg)}
+  .btn.secondary{color:var(--accent)}
+  .btn:focus-visible{outline:3px solid var(--fg);outline-offset:2px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .card h2{font-size:18px;margin:0 0 10px}
+  ul{margin:0;padding-left:20px}li{margin:4px 0}
+  footer{margin-top:40px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Rent, mess and complaints for your PG, in one free app.</h1>
+  <p class="hi">PG ka rent, mess aur complaints, ek free app mein. No more notebooks or chasing on WhatsApp.</p>
+
+  <div class="cta">
+    <!-- Replace FORM_URL with your Google Form link. ?role= lets the form/analytics separate owners from renters. -->
+    <a class="btn primary" id="cta-owner" href="FORM_URL?role=owner">I run a PG: join the pilot</a>
+    <a class="btn secondary" id="cta-renter" href="FORM_URL?role=renter">I live in a PG: get early access</a>
+  </div>
+
+  <div class="grid">
+    <section class="card" aria-labelledby="o">
+      <h2 id="o">For PG owners</h2>
+      <ul>
+        <li>See who has paid and who hasn't, at a glance</li>
+        <li>Summary 5 days before rent is due</li>
+        <li>Renters get reminders automatically, so you stop chasing</li>
+        <li>Complaint box showing who reported what, with photos</li>
+        <li>Renter records, occupancy and a notice board</li>
+      </ul>
+    </section>
+    <section class="card" aria-labelledby="r">
+      <h2 id="r">For renters</h2>
+      <ul>
+        <li>Exact rent and mess dues, no confusion</li>
+        <li>Pay by UPI and get an automatic rent receipt (for HRA)</li>
+        <li>File complaints and track them until they're fixed</li>
+        <li>Weekly mess menu and "skip meal today"</li>
+        <li>Your address and phone stay private from roommates</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>Free for owners and renters. We're talking to PG owners before building. Leave your details and we'll contact you only about this pilot.</footer>
+</main>
+<script>
+  // Optional: add a PostHog snippet here to count visits and CTA clicks by role.
+  document.querySelectorAll('.btn').forEach(function(b){
+    b.addEventListener('click',function(){ if(window.posthog){posthog.capture('waitlist_click',{role:b.id.replace('cta-','')});} });
+  });
+</script>
+</body>
+</html>

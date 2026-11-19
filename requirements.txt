@@ -1,0 +1,140 @@
+# PG Manager - everything you need to download to build and run the project
+#
+# This is a JavaScript project, so this file is NOT used by pip.
+# It's a checklist: section 0 has the commands, sections 1-3 list what they download.
+# npm package versions are the exact ones in package-lock.json.
+
+# ===================================================================
+# 0. QUICK SETUP COMMANDS (Windows, run in PowerShell or cmd)
+# ===================================================================
+# Steps A and B are enough to run the app in demo mode. C-F are optional.
+#
+# --- A. Install Node.js (includes npm). Close and reopen the terminal afterwards. ---
+#     winget install -e --id OpenJS.NodeJS.LTS
+#     node --version                         (must print v24.15+ or v22.22.3+)
+#
+# --- B. Install all npm packages (sections 2 and 3 below) ---
+#     cd <project-folder>
+#     npm ci                                 (exact versions from package-lock.json)
+#
+# --- C. Local backend: Docker Desktop + Supabase images ---
+#     winget install -e --id Docker.DockerDesktop
+#     (start Docker Desktop and wait for "Engine running", then:)
+#     cd <project-folder>
+#     start-backend.cmd                      (first run downloads Supabase CLI 3.1.0 + Docker images, ~5 min)
+#
+# --- D. Android builds: Android Studio (includes JDK 21 and the SDK Manager) ---
+#     winget install -e --id Google.AndroidStudio
+#     (open Android Studio once, finish the setup wizard, then in
+#      Settings > Languages & Frameworks > Android SDK tick "Android 16 (API 36)")
+#     cd <project-folder>
+#     npm run build
+#     npx cap sync android
+#     cd android
+#     .\gradlew.bat assembleDebug            (downloads Gradle 8.14.3 + all Android libraries)
+#
+# --- E. iOS builds (on a Mac only) ---
+#     xcode-select --install                 (then install Xcode from the Mac App Store)
+#     npm ci
+#     npm run build
+#     npx cap sync ios
+#     npx cap open ios                       (Xcode downloads the Swift packages on first open)
+#
+# --- F. End-to-end tests: Playwright browser ---
+#     cd <project-folder>
+#     npx playwright install chromium
+
+# ===================================================================
+# 1. TOOLS TO INSTALL BY HAND (see section 0 for commands)
+# ===================================================================
+
+# --- Always needed ---
+Node.js            >= 24.15.0  (or 22.22.3+, or 26+)   https://nodejs.org   (includes npm)
+
+# --- Only for the local backend (start-backend.cmd) ---
+Docker Desktop     latest                              https://www.docker.com/products/docker-desktop/
+Supabase CLI       3.1.0       (no install needed: the script runs it with "npx supabase@3.1.0")
+
+# --- Only for Android builds ---
+Android Studio     latest                              https://developer.android.com/studio
+JDK                21          (bundled with Android Studio)
+Android SDK        Platform 36 (compileSdk/targetSdk 36, minSdk 24)
+Gradle             8.14.3      (downloaded automatically by the Gradle wrapper)
+Android Gradle Plugin 8.13.0   (downloaded automatically)
+
+# --- Only for iOS builds (macOS only) ---
+Xcode              latest      (from the Mac App Store; uses Swift Package Manager)
+
+# --- Only for end-to-end tests ---
+Playwright Chromium browser    (npx playwright install chromium)
+
+# ===================================================================
+# 2. APP DEPENDENCIES (installed by "npm install")
+# ===================================================================
+
+# Angular
+@angular/common==22.2.5
+@angular/compiler==22.2.5
+@angular/core==22.2.5
+@angular/forms==22.2.5
+@angular/platform-browser==22.2.5
+@angular/router==22.2.5
+
+# Ionic
+@ionic/angular==9.0.11
+ionicons==8.1.0
+
+# Capacitor (native runtime + plugins)
+@capacitor/core==8.6.2
+@capacitor/android==8.6.2
+@capacitor/ios==8.6.2
+@capacitor/app==8.1.2
+@capacitor/camera==8.2.6
+@capacitor/filesystem==8.1.5
+@capacitor/geolocation==8.2.4
+@capacitor/haptics==8.0.2
+@capacitor/keyboard==8.0.6
+@capacitor/local-notifications==8.3.1
+@capacitor/network==8.0.1
+@capacitor/share==8.0.3
+@capacitor/status-bar==8.0.4
+@aparajita/capacitor-secure-storage==8.0.1
+
+# Backend, offline storage, analytics, crash reporting
+@supabase/supabase-js==2.119.0
+dexie==4.4.7
+posthog-js==1.448.0
+@sentry/angular==10.76.2
+@sentry/capacitor==4.6.0
+
+# Utilities
+rxjs==7.8.2
+tslib==2.9.1
+
+# ===================================================================
+# 3. DEVELOPMENT DEPENDENCIES (also installed by "npm install")
+# ===================================================================
+
+# Build tools
+@angular/build==22.2.6
+@angular/cli==22.2.6
+@angular/compiler-cli==22.2.5
+@angular/language-service==22.2.5
+@capacitor/cli==8.6.2
+@ionic/angular-toolkit==13.0.0
+typescript==6.0.3
+@types/node==26.6.6
+
+# Testing
+vitest==5.1.0
+jsdom==31.0.1
+@playwright/test==1.65.0
+@electric-sql/pglite==0.3.16        (in-memory Postgres for "npm run test:backend")
+
+# Linting and formatting
+eslint==10.14.0
+angular-eslint==22.6.0
+typescript-eslint==8.72.2
+@ionic/eslint-config==0.5.0
+prettier==3.10.1
+@ionic/prettier-config==4.0.0

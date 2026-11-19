@@ -1,0 +1,74 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import '@ionic/angular/css/palettes/dark.system.css';
+
+/* ---------- Accessibility ---------- */
+/* Extra-large text mode (Settings → Accessibility). Ionic sizes in rem/em scale from this. */
+html.large-text {
+  --ion-default-font: inherit;
+  font-size: 125%;
+}
+html.large-text ion-label h2,
+html.large-text ion-label h3,
+html.large-text ion-label p,
+html.large-text ion-note,
+html.large-text ion-button {
+  font-size: 1.15em;
+}
+/* Respect the OS "reduce motion" setting. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+/* Visible keyboard focus everywhere. */
+:focus-visible {
+  outline: 3px solid var(--ion-color-primary-shade);
+  outline-offset: 2px;
+}
+
+/* Amounts at the end of list rows: full size, full contrast. */
+ion-item > ion-note[slot='end'] {
+  font-size: 1rem;
+  color: var(--ion-text-color);
+}
+/* Darker amber for warning text so it meets WCAG AA (4.5:1) on white. */
+.text-warning,
+ion-text[color='warning'] {
+  color: #8a5a00 !important;
+}

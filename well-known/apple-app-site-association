@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["REPLACE_TEAMID.com.pgmanager.app"],
+        "components": [{ "/": "/invite/*" }, { "/": "/complaints/*" }, { "/": "/dues" }]
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "pg-manager",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

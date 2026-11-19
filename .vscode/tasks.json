@@ -1,0 +1,37 @@
+{
+  // Terminal → Run Task… → "Start all" opens Backend and Frontend in two terminal tabs.
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Backend",
+      "type": "process",
+      "command": "powershell",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/start-backend.ps1"],
+      "presentation": { "panel": "dedicated", "reveal": "always", "group": "pg" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Frontend",
+      "type": "process",
+      "command": "powershell",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/start-frontend.ps1"],
+      "isBackground": true,
+      "presentation": { "panel": "dedicated", "reveal": "always", "group": "pg" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Stop backend",
+      "type": "process",
+      "command": "powershell",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/start-backend.ps1", "-Stop"],
+      "presentation": { "panel": "shared" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start all",
+      "dependsOn": ["Backend", "Frontend"],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    }
+  ]
+}
